@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Parker Company - Holding de comercio digital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700;800&amp;family=Work+Sans:wght@300;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dadada",
+                        "on-secondary-container": "#616363",
+                        "surface-container-high": "#e8e8e8",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "primary": "#000000",
+                        "surface-container-low": "#f3f3f3",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary": "#5d5f5f",
+                        "inverse-surface": "#303030",
+                        "error-container": "#ffdad6",
+                        "surface": "#f9f9f9",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "tertiary": "#000000",
+                        "on-surface-variant": "#4c4546",
+                        "on-tertiary-container": "#848484",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-surface": "#1b1b1b",
+                        "on-primary-container": "#848484",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "primary-container": "#1b1b1b",
+                        "secondary-fixed": "#e2e2e2",
+                        "inverse-primary": "#c6c6c6",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-container": "#eeeeee",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#474747",
+                        "outline-variant": "#cfc4c5",
+                        "primary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-background": "#1b1b1b",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#454747",
+                        "surface-variant": "#e2e2e2",
+                        "surface-tint": "#5e5e5e",
+                        "tertiary-container": "#1b1b1b",
+                        "on-primary-fixed": "#1b1b1b",
+                        "background": "#f9f9f9",
+                        "secondary-container": "#dfe0e0",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#7e7576"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1440px",
+                        "section-gap": "160px",
+                        "margin-edge": "64px",
+                        "gutter": "32px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Epilogue"],
+                        "label-caps": ["Work Sans"],
+                        "body-md": ["Work Sans"],
+                        "body-lg": ["Work Sans"],
+                        "headline-lg": ["Epilogue"],
+                        "headline-md": ["Epilogue"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["120px", { "lineHeight": "110%", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "100%", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "160%", "letterSpacing": "0", "fontWeight": "300" }],
+                        "body-lg": ["20px", { "lineHeight": "160%", "letterSpacing": "-0.01em", "fontWeight": "300" }],
+                        "headline-lg": ["64px", { "lineHeight": "115%", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "120%", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        html { scroll-behavior: smooth; }
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        .group:hover .group-hover\:rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        /* Scroll Reveal Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-12 py-6 bg-white/80 backdrop-blur-md border-b border-black">
+<a class="hover:opacity-80 transition-opacity" href="#">
+<img alt="Parker Company Logo" class="w-auto object-contain h-9" src="https://lh3.googleusercontent.com/aida/ADBb0ujRfOVTGr4W3lEbgWjhQ33CBCkXaovXwfGjbrsmLqo60ModqI69Bpr3KbhXIz4xWZqiiThON8p2IyI76ISOK4rMFSRmy8fI2I9NA-RfV-XiV-9HSBhERRYiO_QD4Ajy90N4jxzR9sewKBxmv-kBrGM33QSjUj2cvFNgZ3SXwQm7eOEvl1G5ZYlKsSead8MD2yGkXsTYJOsoWcY_mfOPJIzBpNwisbuci57sdpFsIHDnFQuYMLaCIQOQyk5T-Ie-B5FHeMLqEVHIwlg"/>
+</a>
+<div class="hidden md:flex items-center gap-8 font-['Epilogue'] tracking-tight">
+<a class="text-black/60 font-medium hover:text-black hover:bg-black hover:text-white px-3 py-1 transition-all duration-300" href="#el-grupo">El Grupo</a>
+<a class="text-black/60 font-medium hover:text-black hover:bg-black hover:text-white px-3 py-1 transition-all duration-300" href="#gobierno-corporativo">Gobierno</a>
+<a class="text-black/60 font-medium hover:text-black hover:bg-black hover:text-white px-3 py-1 transition-all duration-300" href="#empresas">Empresas</a>
+<a class="text-black/60 font-medium hover:text-black hover:bg-black hover:text-white px-3 py-1 transition-all duration-300" href="#contacto">Contacto</a>
+</div>
+<a class="hidden md:inline-flex border border-black px-6 py-2 text-black hover:bg-black hover:text-white transition-colors duration-300 scale-100 active:scale-95 transition-transform font-label-caps text-label-caps uppercase" href="#inversionistas">
+        Área Inversionistas
+    </a>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<main>
+<!-- HERO -->
+<section class="min-h-[819px] flex flex-col justify-center px-margin-edge max-w-container-max mx-auto py-section-gap reveal" id="hero">
+<div class="max-w-4xl reveal">
+<h1 class="font-display-xl text-display-xl text-primary mb-8 break-words hyphens-auto leading-[1.1]">Parker Company</h1>
+<p class="font-headline-md text-headline-md text-on-surface-variant mb-12 max-w-3xl leading-snug">
+            Tecnología y operación integradas para el comercio digital.
+            Construidas juntas desde adentro de la industria.
+        </p>
+<div class="flex flex-col sm:flex-row gap-6">
+<a class="inline-flex justify-center items-center px-8 py-4 bg-primary text-on-primary hover:bg-white hover:text-primary border border-primary transition-colors font-label-caps text-label-caps uppercase" href="#empresas">
+                Conocer las empresas
+            </a>
+<a class="inline-flex justify-center items-center px-8 py-4 bg-white text-primary border border-primary hover:bg-primary hover:text-on-primary transition-colors font-label-caps text-label-caps uppercase" href="#el-grupo">
+                El Grupo
+            </a>
+</div>
+</div>
+</section>
+<!-- EL GRUPO -->
+<section class="px-margin-edge max-w-container-max mx-auto pt-section-gap border-t border-primary reveal" id="el-grupo">
+<div class="mb-16 reveal">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block mb-4">El Grupo</span>
+<h2 class="font-headline-lg text-headline-lg text-primary max-w-4xl">Empresas que aportan infraestructura operativa al Comercio Digital</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-20" data-stagger="true">
+<div class="border-t border-primary pt-6 reveal">
+<h3 class="font-label-caps text-label-caps uppercase mb-4">Proposito</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Construimos la tecnología y la operación que permite desde Marcas a Operadores logísticos mover el comercio digital con control, visibilidad y escala. Más de 20 años en la industria nos enseñaron dónde están los problemas reales del ecosistema. Eso es lo que resolvemos</p>
+</div>
+<div class="border-t border-primary pt-6 reveal">
+<h3 class="font-label-caps text-label-caps uppercase mb-4">Visión</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Ser el estándar operativo de las infraestructuras que sostienen el comercio digital en América Latina, siendo parte activa del estado del arte de la industria</p>
+</div>
+<div class="border-t border-primary pt-6 reveal">
+<h3 class="font-label-caps text-label-caps uppercase mb-4">Valores</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Precisión técnica, escalabilidad implacable y neutralidad operativa.</p>
+</div>
+</div>
+</section>
+<!-- NEW TIMELINE SECTION -->
+<section class="px-margin-edge max-w-container-max mx-auto py-section-gap border-t border-primary/20 reveal" id="hitos">
+<div class="mb-16 reveal">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block mb-4">Trayectoria</span>
+<h2 class="font-headline-md text-headline-md text-primary">Hitos Históricos</h2>
+</div>
+<div class="relative">
+<!-- Timeline Horizontal Line -->
+<div class="absolute top-[3.25rem] left-0 w-full h-[1px] bg-primary/20"></div>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-12 relative" data-stagger="true">
+<!-- 2010 -->
+<div class="group flex flex-col pt-4 reveal">
+<div class="mb-8 flex flex-col gap-2">
+<span class="font-['Epilogue'] text-4xl font-bold text-primary transition-transform duration-300 group-hover:scale-110 origin-left">2010</span>
+<div class="w-3 h-3 rounded-full bg-primary ring-4 ring-white relative z-10 transition-shadow duration-300 group-hover:shadow-[0_0_15px_rgba(0,0,0,0.3)]"></div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase font-bold mb-3">Fundación</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Inicio de operaciones en el ecosistema del comercio digital chileno.</p>
+</div>
+</div>
+<!-- 2014 -->
+<div class="group flex flex-col pt-4 reveal">
+<div class="mb-8 flex flex-col gap-2">
+<span class="font-['Epilogue'] text-4xl font-bold text-primary transition-transform duration-300 group-hover:scale-110 origin-left">2014</span>
+<div class="w-3 h-3 rounded-full bg-primary ring-4 ring-white relative z-10 transition-shadow duration-300 group-hover:shadow-[0_0_15px_rgba(0,0,0,0.3)]"></div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase font-bold mb-3">Salto Tecnológico</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Lanzamiento de las primeras soluciones tecnologías propias, sentando las bases de la escalabilidad digital.</p>
+</div>
+</div>
+<!-- 2018 -->
+<div class="group flex flex-col pt-4 reveal">
+<div class="mb-8 flex flex-col gap-2">
+<span class="font-['Epilogue'] text-4xl font-bold text-primary transition-transform duration-300 group-hover:scale-110 origin-left">2018</span>
+<div class="w-3 h-3 rounded-full bg-primary ring-4 ring-white relative z-10 transition-shadow duration-300 group-hover:shadow-[0_0_15px_rgba(0,0,0,0.3)]"></div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase font-bold mb-3">Consolidación: Operaciones externas sobre plataforma propia</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Se consolida el stack de servicios, integrando unidades operativas físicas y digitales bajo un mismo ecosistema.</p>
+</div>
+</div>
+<!-- 2022 -->
+<div class="group flex flex-col pt-4 reveal">
+<div class="mb-8 flex flex-col gap-2">
+<span class="font-['Epilogue'] text-4xl font-bold text-primary transition-transform duration-300 group-hover:scale-110 origin-left">2022</span>
+<div class="w-3 h-3 rounded-full bg-primary ring-4 ring-white relative z-10 transition-shadow duration-300 group-hover:shadow-[0_0_15px_rgba(0,0,0,0.3)]"></div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase font-bold mb-3">Expansión Regional</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Apertura de nodos operativos en mercados clave de Latinoamérica, con foco en el Pacifico: Costa Rica y Perú.</p>
+</div>
+</div>
+<!-- 2025 -->
+<div class="group flex flex-col pt-4 reveal">
+<div class="mb-8 flex flex-col gap-2">
+<span class="font-['Epilogue'] text-4xl font-bold text-primary transition-transform duration-300 group-hover:scale-110 origin-left">2025</span>
+<div class="w-3 h-3 rounded-full bg-primary ring-4 ring-white relative z-10 transition-shadow duration-300 group-hover:shadow-[0_0_15px_rgba(0,0,0,0.3)]"></div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase font-bold mb-3">Escala validada</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">2 millones de operaciones procesadas, 100.000 entregas de alto valor y un SLA superior al 99,15%. La operación superó sus propias proyecciones.</p>
+</div>
+</div>
+<!-- 2026 -->
+<div class="group flex flex-col pt-4 reveal">
+<div class="mb-8 flex flex-col gap-2">
+<span class="font-['Epilogue'] text-4xl font-bold text-primary transition-transform duration-300 group-hover:scale-110 origin-left">2026</span>
+<div class="w-3 h-3 rounded-full bg-primary ring-4 ring-white relative z-10 transition-shadow duration-300 group-hover:shadow-[0_0_15px_rgba(0,0,0,0.3)]"></div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase font-bold mb-3">Gobierno Corporativo</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Implementación del nuevo modelo operativo segmentado, estandarización de decisiones y Compliance.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- GOBIERNO CORPORATIVO -->
+<div class="py-section-gap border-t border-primary px-margin-edge max-w-container-max mx-auto bg-white reveal" id="gobierno-corporativo">
+<div class="mb-16 reveal">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block mb-12">Gobierno Corporativo</span>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-start">
+<div>
+<h2 class="font-['Epilogue'] font-bold text-black text-5xl lg:text-7xl leading-[1.1] m-0">Liderazgo y<br/>Estructura<br/>Operativa</h2>
+</div>
+<div class="space-y-8">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    En 2026 Parker Company estructuró su modelo de gobierno corporativo, organizando las unidades de negocio bajo un holding que centraliza la estrategia, las capacidades compartidas del grupo y la disciplina de capital. Esta evolución permite escalar la operación del grupo sin perder control ni visibilidad sobre cada empresa.
+                </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    El paso siguiente es la consolidación de una matriz de riesgos común, el fortalecimiento del compliance transversal y la estandarización de políticas que gobiernen las actividades de todas las unidades — desde los estándares operativos hasta los criterios de expansión regional.
+                </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    Actualmente, en Parker Company contamos con una serie de conjuntos de políticas y guías de buenas prácticas que sustentan nuestra forma de hacer negocios.
+                </p>
+</div>
+</div>
+</div>
+<div class="mb-section-gap">
+<h3 class="font-headline-md text-headline-md mb-8 reveal">Directorio</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter perspective-1000" data-stagger="true">
+<!-- Card 1 -->
+<div class="group h-[400px] w-full cursor-pointer perspective-1000 reveal">
+<div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 transform-style-3d group-hover:rotate-y-180">
+<div class="absolute inset-0 backface-hidden bg-white border border-primary p-6 flex flex-col justify-end">
+<img alt="Arturo Parker" class="absolute inset-0 w-full h-full object-cover -z-10 opacity-20 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrxIWADp69_v6U8yosmVCiIJPChE_jpwQAruU8Huks8G-dHaFDyrHRh_rw6sMLYSGc5N-Bcm0RoI8GR6iX-fpG5mfXomv56ob5RkKudWOkr1CC2v0Ddl_NwA9zMU0I9alcZ6p_ViKSFNahyieYOjJ_p0PaZi23P9mX6GmLfajY2bxWX2iK7h6dq-BqjJaqs5KJJrkXDF4K7eikLRdlqaf632uotN7ziePLbyX1Teg7YokONu9-aDbGiIdINB_74KGM9N-UJ6GU4HVw"/>
+<h4 class="font-headline-md text-headline-md font-bold text-primary mb-1">Arturo         Parker</h4>
+<p class="font-label-caps text-label-caps text-primary uppercase bg-white/80 inline-block px-2 py-1">Director / Founder</p>
+</div>
+<div class="absolute inset-0 h-full w-full rounded-xl bg-white border border-primary p-6 text-center text-primary rotate-y-180 backface-hidden flex items-center justify-center">
+<p class="font-body-md text-body-md">Dirigió fondos de inversión enfocados en la industria digital. Vio las oportunidades antes que el mercado y asignó capital con información privilegiada sobre hacia dónde iba el comercio. Esa visión es la que hoy dirige la expansión de Parker Company</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group h-[400px] w-full cursor-pointer perspective-1000 reveal">
+<div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 transform-style-3d group-hover:rotate-y-180">
+<div class="absolute inset-0 backface-hidden bg-white border border-primary p-6 flex flex-col justify-end">
+<img alt="Paul" class="absolute inset-0 w-full h-full object-cover -z-10 opacity-20 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn9iuEHKcJkv0sMktT7mR401vU-yLsG5LIUjDCeYMQzrRWq5q7NBsMMZ2R8NYcwYgM1uE8cPGNpzuiOVyjDW4ntOwSZE1BDQ3cidjo1tbw5_nSGof4qmJrmVKs65JsRmO3WHj4rB7-bSL2FVrWow4j25X1DQyaLd59tQ-duGgtUn3Cssdi3qiTZ69Mjdr45UjqjuVSc8sjlgDUqQeIknRkWMiBlTo3MHsfhcIX2URQQvQ7eAHrE1SIrZS2EZ_9yvr7dbixbC46PD54"/>
+<h4 class="font-headline-md text-headline-md font-bold text-primary mb-1">Paul Wheeler</h4>
+<p class="font-label-caps text-label-caps text-primary uppercase bg-white/80 inline-block px-2 py-1">Director / Founder</p>
+</div>
+<div class="absolute inset-0 h-full w-full rounded-xl bg-white border border-primary p-6 text-center text-primary rotate-y-180 backface-hidden flex items-center justify-center">
+<p class="font-body-md text-body-md">Más de 200 proyectos eCommerce implementados. No construyó una empresa de eCommerce — construyó la infraestructura detrás de 200 de ellas. Su valor está en convertir estrategia en operación real: liderar equipos, construir procesos y hacer que las cosas pasen.</p>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group h-[400px] w-full cursor-pointer perspective-1000 reveal">
+<div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 transform-style-3d group-hover:rotate-y-180">
+<div class="absolute inset-0 backface-hidden bg-white border border-primary p-6 flex flex-col justify-end">
+<img alt="Director 3" class="absolute inset-0 w-full h-full object-cover -z-10 opacity-20 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwoO_DxiJXf6zev-2-XwAK7Hc-Tv6VJ9vl2SxOavCtAm8GEgBjVExl0D_9YHcnEemgy9gCPAVAEwALnwxjpY1mCPxbRl98k-G4VKdX4tKFTnbCQoYNxJFuFEqtHaxnJoLK-bLrCIobL5RJDFGDS4f-A41GNhV53RCRHjPo7JhFgpuDj-3I4ITyt24qc20RQCSLHhqoghjgPv5611jcffUWCxP2axhcuvcPI8nXLrDxcx75nT3tVeAWMNJ2U2Gyhv64n95aVsRQjWe3"/>
+<h4 class="font-headline-md text-headline-md font-bold text-primary mb-1">Juan Pablo Coderch</h4>
+<p class="font-label-caps text-label-caps text-primary uppercase bg-white/80 inline-block px-2 py-1">Director</p>
+</div>
+<div class="absolute inset-0 h-full w-full rounded-xl bg-white border border-primary p-6 text-center text-primary rotate-y-180 backface-hidden flex items-center justify-center">
+<p class="font-body-md text-body-md">Experto en finanzas corporativas y estrategia regional, con trayectoria en directorios de empresas líderes en logística.</p>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group h-[400px] w-full cursor-pointer perspective-1000 reveal">
+<div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 transform-style-3d group-hover:rotate-y-180">
+<div class="absolute inset-0 backface-hidden bg-white border border-primary p-6 flex flex-col justify-end">
+<img alt="Director 4" class="absolute inset-0 w-full h-full object-cover -z-10 opacity-20 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQcUuPBayO1EPRdDe3ecZCMvuw1vKrf0Cr58mmPQ9vA4L14QfXbqfwfrDbQhHqDDQrWtRgYZhXWgINj7c3yHFcDopMEs3wPLGajlGdR8ZH6WypaKYmOJ_s9oHQVuuS1C-orRM-naDgwi9Z6sIyrFvhHfvNPoFxeUEjQZNE0VCxFgbfsx2voma9GcKm5y2PI7v8SBiZSTDN1Rvqs3W4WbH2nuUm72jROexqCcuMkZavtbXaY4IPE_CUHnrh_N1CpAmjNQcjr2y7eNE9"/>
+<h4 class="font-headline-md text-headline-md font-bold text-primary mb-1">Diego Bacigalupo</h4>
+<p class="font-label-caps text-label-caps text-primary uppercase bg-white/80 inline-block px-2 py-1">Director</p>
+</div>
+<div class="absolute inset-0 h-full w-full rounded-xl bg-white border border-primary p-6 text-center text-primary rotate-y-180 backface-hidden flex items-center justify-center">
+<p class="font-body-md text-body-md">Especialista en expansión de mercados y regulación comercial en el Cono Sur.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-8 reveal">Políticas y Compliance</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter" data-stagger="true">
+<div class="border border-primary/20 p-6 flex flex-col gap-4 hover:border-primary transition-colors reveal">
+<span class="material-symbols-outlined text-primary text-3xl">gavel</span>
+<h4 class="font-label-caps text-label-caps uppercase">Código de Ética</h4>
+</div>
+<div class="border border-primary/20 p-6 flex flex-col gap-4 hover:border-primary transition-colors reveal">
+<span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+<h4 class="font-label-caps text-label-caps uppercase">Política de Calidad y Ciberseguridad</h4>
+</div>
+<div class="border border-primary/20 p-6 flex flex-col gap-4 hover:border-primary transition-colors reveal">
+<span class="material-symbols-outlined text-primary text-3xl">admin_panel_settings</span>
+<h4 class="font-label-caps text-label-caps uppercase">Ley de Protección de Datos</h4>
+</div>
+<div class="border border-primary/20 p-6 flex flex-col gap-4 hover:border-primary transition-colors reveal">
+<span class="material-symbols-outlined text-primary text-3xl">balance</span>
+<h4 class="font-label-caps text-label-caps uppercase">Ley Karin</h4>
+</div>
+<div class="border border-primary/20 p-6 flex flex-col gap-4 hover:border-primary transition-colors reveal">
+<span class="material-symbols-outlined text-primary text-3xl">add_circle</span>
+<h4 class="font-label-caps text-label-caps uppercase">Otros</h4>
+</div>
+</div>
+</div>
+</div>
+<!-- EMPRESAS -->
+<section class="border-t border-primary reveal" id="empresas">
+<div class="px-margin-edge max-w-container-max mx-auto pt-section-gap">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block mb-12 reveal">Empresas del Grupo</span>
+<div class="grid grid-cols-1 lg:grid-cols-2" data-stagger="true">
+<!-- Starkoms -->
+<div class="border-r border-b lg:border-b-0 border-primary p-12 lg:p-24 flex flex-col justify-between min-h-[600px] hover:bg-surface transition-colors group reveal">
+<div>
+<div class="flex items-center gap-4 mb-8">
+<h3 class="font-headline-lg text-headline-lg">Starkoms</h3>
+<span class="material-symbols-outlined text-4xl opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-2">arrow_forward</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="border border-primary px-3 py-1 font-label-caps text-label-caps uppercase">SaaS</span>
+<span class="border border-primary px-3 py-1 font-label-caps text-label-caps uppercase">Logistics</span>
+<span class="border border-primary px-3 py-1 font-label-caps text-label-caps uppercase">B2B</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">SaaS de orquestación logística omnicanal. Centraliza órdenes, inventario, envíos y reglas de negocio en una sola plataforma. Cada integración activada, cada regla configurada, profundiza la relación operativa con el cliente. Se contrata como software: se adopta como infraestructura.</p>
+</div>
+<div class="mt-12">
+<a class="inline-flex items-center gap-2 font-label-caps text-label-caps uppercase hover:underline" href="https://www.starkoms.com" target='_blank' y rel='noopener noreferrer'>
+                        Visitar sitio <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Fullkom -->
+<div class="bg-surface-container-low p-12 lg:p-24 flex flex-col justify-between min-h-[600px] hover:bg-surface-container-high transition-colors group border-b lg:border-b-0 border-primary lg:border-transparent reveal">
+<div>
+<div class="flex items-center gap-4 mb-8">
+<h3 class="font-headline-lg text-headline-lg">Fullkom</h3>
+<span class="material-symbols-outlined text-4xl opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-2">arrow_forward</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="border border-primary px-3 py-1 font-label-caps text-label-caps uppercase">eCommerce</span>
+<span class="border border-primary px-3 py-1 font-label-caps text-label-caps uppercase">Operator</span>
+<span class="border border-primary px-3 py-1 font-label-caps text-label-caps uppercase">Fulfillment</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Operador especializado en eCommerce omnicanal. Gestiona de forma integral la operación digital de marcas — tecnología, canales, fulfillment y atención al cliente. Día a día se construye una relación más profunda con el negocio del cliente, generando resultados que se acumulan y escalan con el tiempo.</p>
+</div>
+<div class="mt-12">
+<a class="inline-flex items-center gap-2 font-label-caps text-label-caps uppercase hover:underline" href="https:fullkom.cl" target='_blank' y rel='noopener noreferrer'>
+                        Visitar sitio <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- REORGANIZED: PRESENCIA REGIONAL -->
+<section class="px-margin-edge max-w-container-max mx-auto py-section-gap border-t border-primary/20 reveal" id="presencia-regional">
+<h3 class="font-headline-md text-headline-md mb-8 reveal">Presencia Regional</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter" data-stagger="true">
+<div class="border border-primary p-8 hover:bg-surface transition-colors reveal">
+<div class="text-4xl font-light mb-4">01</div>
+<h4 class="font-label-caps text-label-caps uppercase mb-2">Chile</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Operaciones centrales y desarrollo tecnológico.</p>
+</div>
+<div class="border border-primary p-8 hover:bg-surface transition-colors reveal">
+<div class="text-4xl font-light mb-4">02</div>
+<h4 class="font-label-caps text-label-caps uppercase mb-2">Perú</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Primer mercado de expansión regional. Operaciones activas desde 2024.</p>
+</div>
+<div class="border border-primary p-8 hover:bg-surface transition-colors reveal">
+<div class="text-4xl font-light mb-4">03</div>
+<h4 class="font-label-caps text-label-caps uppercase mb-2">LATAM</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Soporte SaaS y despliegue de infraestructura.</p>
+</div>
+</div>
+</section>
+<!-- INVERSIONISTAS -->
+<section class="bg-primary text-on-primary py-section-gap px-margin-edge" id="inversionistas">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<div class="reveal">
+<h2 class="font-headline-lg text-headline-lg mb-8">Porque invertir en Parker Company.</h2>
+<p class="font-body-lg text-body-lg text-on-primary/80 max-w-lg mb-12">
+                Parker Company opera en la intersección donde pocas empresas pueden estar: tecnología propia y operación real, integradas bajo un mismo grupo. Dos empresas complementarias con clientes que llevan años operando sobre nuestra infraestructura. Modelo validado en Chile, expansión activa en Perú.
+            </p>
+<p class="font-label-caps text-label-caps uppercase text-on-primary/50">
+                Contacto directo: arturo@parker.company
+            </p>
+</div>
+<div class="border border-on-primary/20 p-8 md:p-12 reveal">
+<div class="flex items-center gap-4 mb-8 border-b border-on-primary/20 pb-4">
+<span class="material-symbols-outlined">lock</span>
+<h3 class="font-label-caps text-label-caps uppercase">Área Reservada</h3>
+</div>
+<ul class="space-y-4 mb-12 opacity-50">
+<li class="flex items-center gap-4 font-body-md text-body-md"><span class="material-symbols-outlined text-sm">description</span> Deck de Inversión</li>
+<li class="flex items-center gap-4 font-body-md text-body-md"><span class="material-symbols-outlined text-sm">trending_up</span> Estrategia Corporativa</li>
+<li class="flex items-center gap-4 font-body-md text-body-md"><span class="material-symbols-outlined text-sm">lightbulb</span> Filosofía de Operación</li>
+<li class="flex items-center gap-4 font-body-md text-body-md"><span class="material-symbols-outlined text-sm">account_balance</span> Finanzas Auditadas</li>
+</ul>
+<form class="space-y-6">
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2" for="investor-password">Clave de acceso</label>
+<input class="w-full bg-transparent border-0 border-b border-on-primary/50 text-on-primary focus:ring-0 focus:border-on-primary py-2 px-0 transition-colors" id="investor-password" placeholder="••••••••" type="password"/>
+</div>
+<button class="w-full bg-white text-primary py-4 font-label-caps text-label-caps uppercase hover:bg-surface-dim transition-colors" type="button">
+                    Ingresar
+                </button>
+</form>
+</div>
+</div>
+</section>
+<!-- CONTACTO -->
+<section class="px-margin-edge max-w-container-max mx-auto py-section-gap reveal" id="contacto">
+<div class="mb-16 reveal">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Contacto.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Canalizamos consultas según su naturaleza para asegurar una respuesta precisa.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-4 space-y-12 pr-8 border-r border-primary/20 reveal">
+<div>
+<h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-2">Email General</h4>
+<a class="font-body-lg text-body-lg hover:underline" href="mailto:contacto@parker.company">contacto@parker.company</a>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-2">Teléfono</h4>
+<a class="font-body-lg text-body-lg hover:underline" href="tel:+56220000000">+56 2 2000 0000</a>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-2">Oficina Central</h4>
+<p class="font-body-lg text-body-lg">Santiago, Chile</p>
+</div>
+</div>
+<div class="lg:col-span-8 lg:pl-12 reveal">
+<div class="flex gap-8 mb-12 border-b border-primary/20 pb-4" id="contact-tabs">
+<button class="tab-btn font-label-caps text-label-caps uppercase text-primary border-b-2 border-primary pb-4 -mb-[18px] transition-all" data-tab="negocio" onclick="switchTab('negocio')">Negocio</button>
+<button class="tab-btn font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-primary transition-colors pb-4 -mb-[18px] transition-all" data-tab="prensa" onclick="switchTab('prensa')">Prensa</button>
+<button class="tab-btn font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-primary transition-colors pb-4 -mb-[18px] transition-all" data-tab="talento" onclick="switchTab('talento')">Trabaja con Nosotros</button>
+</div>
+<!-- Tab contents wrap in a reveal container to ensure consistent transition -->
+<div id="tabs-container">
+<!-- Tab: Negocio -->
+<div class="contact-tab-content" id="tab-negocio">
+<form class="space-y-8 max-w-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2">Nombre</label>
+<input class="w-full bg-transparent border-0 border-b border-primary/50 focus:ring-0 focus:border-primary py-2 px-0 transition-colors" placeholder="Tu nombre" type="text"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2">Empresa</label>
+<input class="w-full bg-transparent border-0 border-b border-primary/50 focus:ring-0 focus:border-primary py-2 px-0 transition-colors" placeholder="Nombre de empresa" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2">Email Corporativo</label>
+<input class="w-full bg-transparent border-0 border-b border-primary/50 focus:ring-0 focus:border-primary py-2 px-0 transition-colors" placeholder="email@empresa.com" type="email"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2">Asunto detallado</label>
+<textarea class="w-full bg-transparent border-0 border-b border-primary/50 focus:ring-0 focus:border-primary py-2 px-0 transition-colors resize-none" placeholder="¿Cómo podemos ayudarte?" rows="4"></textarea>
+</div>
+<button class="bg-primary text-white px-8 py-4 font-label-caps text-label-caps uppercase hover:bg-black/80 transition-colors" type="button">Enviar Mensaje</button>
+</form>
+</div>
+<!-- Tab: Prensa -->
+<div class="contact-tab-content hidden" id="tab-prensa">
+<div class="mb-12">
+<h3 class="font-headline-md text-headline-md mb-6">Notas de Prensa</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<a class="flex items-center justify-between p-4 border border-primary/10 hover:border-primary transition-colors group" href="#">
+<span class="font-body-md">Comunicado de Prensa - Octubre 2024</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100">download</span>
+</a>
+<a class="flex items-center justify-between p-4 border border-primary/10 hover:border-primary transition-colors group" href="#">
+<span class="font-body-md">Kit de Media 2024</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100">download</span>
+</a>
+<a class="flex items-center justify-between p-4 border border-primary/10 hover:border-primary transition-colors group" href="#">
+<span class="font-body-md">Reporte de Expansión Regional</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100">download</span>
+</a>
+<a class="flex items-center justify-between p-4 border border-primary/10 hover:border-primary transition-colors group" href="#">
+<span class="font-body-md">Logos y Activos de Marca</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100">download</span>
+</a>
+</div>
+</div>
+<div class="pt-8 border-t border-primary/10">
+<h3 class="font-label-caps text-label-caps uppercase mb-6">Contacto de Prensa</h3>
+<form class="space-y-8 max-w-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2">Nombre</label>
+<input class="w-full bg-transparent border-0 border-b border-primary/50 focus:ring-0 focus:border-primary py-2 px-0 transition-colors" type="text"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2">Medio</label>
+<input class="w-full bg-transparent border-0 border-b border-primary/50 focus:ring-0 focus:border-primary py-2 px-0 transition-colors" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2">Consulta de Prensa</label>
+<textarea class="w-full bg-transparent border-0 border-b border-primary/50 focus:ring-0 focus:border-primary py-2 px-0 transition-colors resize-none" rows="3"></textarea>
+</div>
+<button class="bg-primary text-white px-8 py-4 font-label-caps text-label-caps uppercase hover:bg-black/80 transition-colors" type="button">Enviar Solicitud</button>
+</form>
+</div>
+</div>
+<!-- Tab: Trabaja con Nosotros -->
+<div class="contact-tab-content hidden" id="tab-talento">
+<form class="space-y-8 max-w-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2">Nombre Completo</label>
+<input class="w-full bg-transparent border-0 border-b border-primary/50 focus:ring-0 focus:border-primary py-2 px-0 transition-colors" type="text"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2">Email Personal</label>
+<input class="w-full bg-transparent border-0 border-b border-primary/50 focus:ring-0 focus:border-primary py-2 px-0 transition-colors" type="email"/>
+</div>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2">Área de Interés</label>
+<select class="w-full bg-transparent border-0 border-b border-primary/50 focus:ring-0 focus:border-primary py-2 px-0 transition-colors font-body-md">
+<option disabled="" selected="" value="">Selecciona un área</option>
+<option value="logistics">Logística</option>
+<option value="tech">Tecnología &amp; Producto</option>
+<option value="operations">Operaciones</option>
+<option value="hr">Recursos Humanos</option>
+</select>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps uppercase mb-2">Enlace a CV o LinkedIn</label>
+<input class="w-full bg-transparent border-0 border-b border-primary/50 focus:ring-0 focus:border-primary py-2 px-0 transition-colors" placeholder="https://..." type="url"/>
+</div>
+<button class="bg-primary text-white px-8 py-4 font-label-caps text-label-caps uppercase hover:bg-black/80 transition-colors" type="button">Enviar Perfil</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-12 flex flex-col md:flex-row justify-between items-center gap-8 bg-white border-t border-black">
+<div>
+    <img alt="Parker Company Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujRfOVTGr4W3lEbgWjhQ33CBCkXaovXwfGjbrsmLqo60ModqI69Bpr3KbhXIz4xWZqiiThON8p2IyI76ISOK4rMFSRmy8fI2I9NA-RfV-XiV-9HSBhERRYiO_QD4Ajy90N4jxzR9sewKBxmv-kBrGM33QSjUj2cvFNgZ3SXwQm7eOEvl1G5ZYlKsSead8MD2yGkXsTYJOsoWcY_mfOPJIzBpNwisbuci57sdpFsIHDnFQuYMLaCIQOQyk5T-Ie-B5FHeMLqEVHIwlg"/>
+</div>
+<div class="flex gap-6">
+<a class="text-black/40 hover:text-black transition-colors font-['Epilogue'] text-xs uppercase tracking-widest opacity-100 hover:opacity-80" href="#">Aviso Legal</a>
+<a class="text-black/40 hover:text-black transition-colors font-['Epilogue'] text-xs uppercase tracking-widest opacity-100 hover:opacity-80" href="#">Política de Privacidad</a>
+<a class="text-black/40 hover:text-black transition-colors font-['Epilogue'] text-xs uppercase tracking-widest opacity-100 hover:opacity-80" href="#">Cookies</a>
+</div>
+<div class="font-['Epilogue'] text-xs uppercase tracking-widest text-black">
+        © 2026 Parker Company · Santiago, Chile
+    </div>
+</footer>
+<script>
+    function switchTab(tabId) {
+        // Hide all content
+        document.querySelectorAll('.contact-tab-content').forEach(content => {
+            content.classList.add('hidden');
+        });
+        
+        // Show active content
+        document.getElementById('tab-' + tabId).classList.remove('hidden');
+        
+        // Update tab button styles
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('text-primary', 'border-b-2', 'border-primary');
+            btn.classList.add('text-on-surface-variant');
+        });
+        
+        const activeBtn = document.querySelector(`[data-tab="${tabId}"]`);
+        activeBtn.classList.add('text-primary', 'border-b-2', 'border-primary');
+        activeBtn.classList.remove('text-on-surface-variant');
+    }
+
+    // Scroll Reveal Intersection Observer Implementation
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    
+                    // Handle staggered items
+                    if (target.hasAttribute('data-stagger')) {
+                        const revealItems = target.querySelectorAll('.reveal');
+                        revealItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('active');
+                            }, index * 150); // Stagger delay of 150ms
+                        });
+                    } else if (target.classList.contains('reveal')) {
+                        target.classList.add('active');
+                    }
+                    
+                    // Stop observing once it's revealed
+                    observer.unobserve(target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe single reveal elements
+        document.querySelectorAll('.reveal:not([data-stagger] .reveal)').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Observe stagger containers
+        document.querySelectorAll('[data-stagger="true"]').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Run once on load for elements already in view
+        setTimeout(() => {
+            window.dispatchEvent(new Event('scroll'));
+        }, 100);
+    });
+</script>
+</body></html>
